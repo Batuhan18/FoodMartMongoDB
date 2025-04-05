@@ -1,0 +1,22 @@
+﻿@model FoodMartMongoDB.Dtos.CategoryDtos.UpdateCategoryDto
+@{
+    ViewData["Title"] = "CreateCategory";
+    Layout = null;
+}
+
+<link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<div class="container  mt-5">
+    <h2 class="mb-4">Kategori Ekle</h2>
+    <input type="hidden" asp-for="CategoryId" />
+    <form asp-action="CreateCategory" method="post">
+        <div class="form-group mb-2">
+            <label class="control-label">Kategori Adı</label>
+            <input asp-for="CategoryName" class="form-control" />
+        </div>
+        <div class="form-group mb-2">
+            <label class="control-label">Kategori İkon</label>
+            <input asp-for="Icon" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Ekle</button>
+    </form>
+</div>

@@ -1,0 +1,40 @@
+﻿@model List<FoodMartMongoDB.Dtos.ProductDtos.ResultProductDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = null;
+}
+
+<link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<div class="container mt-5">
+    <h2 class="mb-4">Kategori Listesi</h2>
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Ürün ID</th>
+                <th>Ürün Adı</th>
+                <th>Ürün Görsel</th>
+                <th>Fiyat</th>
+                <th>Stok</th>
+                <th>Sil</th>
+                <th>Güncelle</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@item.ProductId</td>
+                    <td>@item.ProductName</td>
+                    <td>@item.ProductImage</td>
+                    <td>@item.Price</td>
+                    <td>@item.Stock</td>
+                    <td><a href="@Url.Action("DeleteProduct", "Product", new { id = item.ProductId })" class="btn btn-danger btn-sm">Sil</a></td>
+                    <td><a href="@Url.Action("UpdateProduct", "Product", new { id = item.ProductId })" class="btn btn-success btn-sm">Güncelle</a></td>
+                </tr>
+            </tbody>
+        }
+
+
+    </table>
+    <a href="@Url.Action("CreateProduct", "Product",new { area = "Admin" })" class="btn btn-primary btn-sm">Ekle</a>
+</div>
