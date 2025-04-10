@@ -47,5 +47,6 @@ namespace FoodMartMongoDB.Services
             var value = _mapper.Map<Discount>(updateDiscountDto);
             await _discountCollection.FindOneAndReplaceAsync(x => x.DiscountId == updateDiscountDto.DiscountId, value);
         }
+
     }
 }

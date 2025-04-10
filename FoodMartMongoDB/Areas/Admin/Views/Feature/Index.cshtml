@@ -1,0 +1,40 @@
+﻿@model List<FoodMartMongoDB.Dtos.FeatureDtos.ResultFeatureDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = null;
+}
+
+<link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<div class="container mt-5">
+    <h2 class="mb-4">Öne Çıkan Listesi</h2>
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Öne Çıkan ID</th>
+                <th>Öne Çıkan Görsel</th>
+                <th>Öne Çıkan Başlık</th>
+                <th>Öne Çıkan Başlık 2</th>
+                <th>Öne Çıkan Alt Başlık</th>
+                <th>Sil</th>
+                <th>Güncelle</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@item.FeatureId</td>
+                    <td>@item.FeatureImage</td>
+                    <td>@item.FeatureTitle</td>
+                    <td>@item.FeatureHeader</td>
+                    <td>@item.FeatureSubtitle</td>
+                    <td><a href="@Url.Action("DeleteFeature", "Feature", new { id = item.FeatureId })" class="btn btn-danger btn-sm">Sil</a></td>
+                    <td><a href="@Url.Action("UpdateFeature", "Feature", new { id = item.FeatureId })" class="btn btn-success btn-sm">Güncelle</a></td>
+                </tr>
+            </tbody>
+        }
+
+
+    </table>
+    <a href="@Url.Action("CreateFeature", "Feature",new { area = "Admin" })" class="btn btn-primary btn-sm">Ekle</a>
+</div>

@@ -1,0 +1,40 @@
+﻿@model List<FoodMartMongoDB.Dtos.DiscountDtos.ResultDiscountDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = null;
+}
+
+<link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<div class="container mt-5">
+    <h2 class="mb-4">İndirim Listesi</h2>
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>İndirim ID</th>
+                <th>İndirim Oranı</th>
+                <th>İndirim Başlığı</th>
+                <th>İndirim Görsel</th>
+                <th>Açıklama</th>
+                <th>Sil</th>
+                <th>Güncelle</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@item.DiscountId</td>
+                    <td>@item.DiscountPercent</td>
+                    <td>@item.DiscountTitle</td>
+                    <td>@item.DiscountImage</td>
+                    <td>@item.Description</td>
+                    <td><a href="@Url.Action("DeleteDiscount", "Discount", new { id = item.DiscountId })" class="btn btn-danger btn-sm">Sil</a></td>
+                    <td><a href="@Url.Action("UpdateDiscount", "Discount", new { id = item.DiscountId })" class="btn btn-success btn-sm">Güncelle</a></td>
+                </tr>
+            </tbody>
+        }
+
+
+    </table>
+    <a href="@Url.Action("CreateDiscount", "Discount",new { area = "Admin" })" class="btn btn-primary btn-sm">Ekle</a>
+</div>
